@@ -1,0 +1,50 @@
+* {
+    font-family: 'GFS Didot';
+}
+
+#content {
+    color: #ffffff;
+    text-align: center;
+    padding-top: 25%;
+}
+
+#content h1 {
+    font-size: 150px;
+}
+
+#content p {
+    font-size: 30px;
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.jumbotron-custom {
+    color: white;
+    background-image: url('../images/hero-image-blur.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    margin-bottom: 0;
+  }
+
+.jumbotron {
+    background-image: url('../images/hero-image-blur.jpg');
+    height: 350px;
+    margin-bottom: 40px;
+}
+
+.hero-content {
+    color: #ffffff;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 150px;
+}
+
+.hero-content p {
+    font-size: 30px;
+}

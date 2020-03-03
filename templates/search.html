@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title_block %}
+    Search
+{% endblock %}
+
+{% block body_block %}
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="hero-content">
+        <h1>Search</h1>
+        <p>Search for restaurants to suit your needs</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6">
+
+            <form class="form-search" action="" method="post">
+                {% csrf_token %}
+                <!-- Input fields -->
+                <div class="form-group">
+                    <label for="inputName">Name:</label>
+                    <input type="text" class="form-control inputname" id="inputname" placeholder="Restaurant name goes here..." name="inputName">
+                </div>
+
+                <div class="form-group">
+                    <label for="inputCity">City:</label>
+                    <select class="form-control" name="inputCity" id="inputCity">
+                        <option>Glasgow</option>
+                        <option>Dublin</option>
+                        <option>Paris</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputRestrictions">Dietary Restrictions:</label>
+                    <select class="form-control" name="inputRestrictions" id="inputRestrictions">
+                        <option>None</option>
+                        <option>Vegetarian</option>
+                        <option>Vegan</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputRating">Rating:</label>
+                    <select class="form-control" name="inputRating" id="inputRating">
+                        <option>5 Star</option>
+                        <option>4 Star</option>
+                        <option>3 Star</option>
+                        <option>2 Star</option>
+                        <option>1 Star</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-customized">Search</button>
+            </form>
+            <!-- Form end -->
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
+from django.conf import settings
+from django.conf.urls.static import static
+from bon_appetit_app import views
 
 urlpatterns = [
+    path('', views.home, name='home'),
+    path('bon-appetit/', include('bon_appetit_app.urls')),
+    # the above maps any URLs starting with bon-appetit/ to be handled by app
     path('admin/', admin.site.urls),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
