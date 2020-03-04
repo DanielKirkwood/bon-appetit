@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from bon_appetit_app import views
+from django.conf.urls import include
+
 
 urlpatterns = [
+    path('', views.index, name='index'),
+    # The below maps any URLs starting with bon_appetit_app/ to be handled by bon_appetit.
+    path('bon_appetit_app/', include('bon_appetit_app.urls')),
     path('admin/', admin.site.urls),
 ]
