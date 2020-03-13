@@ -30,6 +30,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Vars for templates, images etc.
+
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 
 # Application definition
 
@@ -58,7 +61,9 @@ ROOT_URLCONF = 'bon_appetit_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+<<<<<<< HEAD
         'DIRS': [TEMPLATE_DIR, ],
+
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

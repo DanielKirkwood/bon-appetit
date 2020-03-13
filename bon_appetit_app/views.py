@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+<<<<<<< HEAD
 def home(request):
     context = {}
     # add 'active' to context dict so show current page as active
