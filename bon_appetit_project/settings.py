@@ -61,9 +61,7 @@ ROOT_URLCONF = 'bon_appetit_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-<<<<<<< HEAD
         'DIRS': [TEMPLATE_DIR, ],
-
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
