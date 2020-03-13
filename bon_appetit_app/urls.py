@@ -5,5 +5,6 @@ app_name = 'bon-appetit'
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('search/', views.search, name='search')
+    path('search/', views.search, name='search'),
+    path('top-restaurants/', views.topRestaurants, name='top-restaurants'),
 ]

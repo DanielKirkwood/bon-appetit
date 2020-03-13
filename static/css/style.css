@@ -2,6 +2,7 @@
     font-family: 'GFS Didot';
 }
 
+/* homepage title and p tag */
 #content {
     color: #ffffff;
     text-align: center;
@@ -9,42 +10,60 @@
 }
 
 #content h1 {
-    font-size: 150px;
+    font-size: 6em;
 }
 
 #content p {
-    font-size: 30px;
+    font-size: 1.5em;
 }
 
 .navbar {
     margin-bottom: 0;
 }
 
+/* homepage bacground image */
 .jumbotron-custom {
     color: white;
     background-image: url('../images/hero-image-blur.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
     margin-bottom: 0;
   }
 
+/* hero-image jumbotron */
 .jumbotron {
     background-image: url('../images/hero-image-blur.jpg');
     height: 350px;
-    margin-bottom: 40px;
 }
 
+/* hero jumbotron contents */
 .hero-content {
     color: #ffffff;
     text-align: center;
 }
 
+/* hero jumbotron title */
 .hero-content h1 {
-    font-size: 150px;
+    font-size: 6em;
 }
 
+/* hero jumbotron paragraph */
 .hero-content p {
-    font-size: 30px;
+    font-size: 1.5em;
+}
+
+.section-banner {
+    background: #343a40;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.card {
+    margin-bottom: 30px;
+}
+
+.card-title {
+    margin-top: 20px;
 }

@@ -17,7 +17,14 @@ def searchResults(request):
     pass
 
 def topRestaurants(request):
-    pass
+    # the following is code segment to be implemented later
+    """ restaurant_list = Restaurant.objects.order_by('-rating')[:6]
+        context_dict["restaurants"] = restaurant_list
+    """
+    context = {}
+    # add 'active' to context dict so show current page as active
+    context["top_restaurants_page"] = "active"
+    return render(request, 'top-restaurants.html', context=context)
 
 def viewAccount(request):
     pass

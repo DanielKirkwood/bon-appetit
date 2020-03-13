@@ -21,19 +21,28 @@
 <body>
     <!-- bootrap navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="{% url 'bon-appetit:home' %}">Bon Appetit</a>
+        <a class="navbar-brand" href="{% url 'bon-appetit:home' %}">Bon Appétit</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-item nav-link {{ home_page }}" href="{% url 'bon-appetit:home' %}">Home</a>
-            <a class="nav-item nav-link" href="#">Top Restaurants</a>
+            <a class="nav-item nav-link {{ top_restaurants_page }}" href="{% url 'bon-appetit:top-restaurants' %}">Top Restaurants</a>
             <a class="nav-item nav-link {{ search_page }}" href="{% url 'bon-appetit:search' %}">Search</a>
-            <a class="nav-item nav-link mr-auto" href="#">Account</a>
+            <div class="some-ting"></div>
+            <a class="nav-item nav-link" href="#">Account</a>
           </div>
         </div>
       </nav>
+
+      <div class="jumbotron jumbotron-fluid">
+        <div class="hero-content">
+            {% block hero_content_block %}
+            {% endblock %}
+        </div>
+    </div>
 
     {% block body_block %}
     {% endblock %}
