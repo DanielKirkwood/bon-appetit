@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title_block %}
+    {% if restaurant %}
+        {{ restaurant.name }}
+    {% else %}
+        Bon Appétit
+    {% endif %}
+{% endblock %}
+
+{% block hero_content_block %}
+    {% if restaurant %}
+        <h1>{{ restaurant.name }}</h1>
+        <p>View and review the restaurant</p>
+    {% else %}
+        <h1>Error: no restaurant to view</h1>
+    {% endif %}
+{% endblock %}
+
+{% block body_block %}
+    {% if restaurant %}
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="name-rating">Overall Rating:
+                        <span>
+                            {% if restaurant.rating == 5 %}
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                            {% elif restaurant.rating == 4 %}
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star unchecked"></span>
+                            {% elif restaurant.rating == 3 %}
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star unchecked"></span>
+                                <span class="fa fa-star unchecked"></span>
+                            {% elif restaurant.rating == 2 %}
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star unchecked"></span>
+                                <span class="fa fa-star unchecked"></span>
+                                <span class="fa fa-star unchecked"></span>
+                            {% elif restaurant.rating == 1 %}
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star unchecked"></span>
+                                <span class="fa fa-star unchecked"></span>
+                                <span class="fa fa-star unchecked"></span>
+                                <span class="fa fa-star unchecked"></span>
+                            {% elif restaurant.rating == 0 %}
+                                <span class="fa fa-star unchecked"></span>
+                                <span class="fa fa-star unchecked"></span>
+                                <span class="fa fa-star unchecked"></span>
+                                <span class="fa fa-star unchecked"></span>
+                                <span class="fa fa-star unchecked"></span>
+                            {% endif %}
+                        </span>
+                    </h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <img src="{{ restaurant.picture.url }}" width="240">
+                </div>
+                <div class="col">
+                    2 of 3
+                </div>
+                <div class="col">
+                    3 of 3
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <h1>restaurant does not exists</h1>
+    {% endif %}
+{% endblock %}

@@ -75,3 +75,7 @@
 .unchecked {
     color: #343a40;
 }
+
+.name-rating {
+    text-align: center;
+}

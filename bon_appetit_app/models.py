@@ -19,7 +19,7 @@ class Restaurant(models.Model):
     address = models.CharField(max_length=128, unique=True)
     menu = models.CharField(max_length=128)
     price = models.IntegerField(default=0)
-    picture = models.ImageField(default=0)
+    picture = models.ImageField(blank=True)
     rating = models.IntegerField(default=0)
 
     slug = models.SlugField(unique=True)

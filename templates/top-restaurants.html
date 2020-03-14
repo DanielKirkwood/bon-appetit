@@ -22,44 +22,44 @@
     <div class="row">
 
         
-        {% for item in rating_list %}
+        {% for restaurant in rating_list %}
         <div class="col-lg-4 col-sm-6">
             <div class="card text-center">
                 <div class="card-body">
-                    <img class="card-img-top" src="{% static 'images/placeholder.jpg' %}" alt="placeholder image">
-                    <h5 class="card-title">{{ item.name }}</h5>
+                    <img class="card-img-top" src="{{ restaurant.picture.url }}" alt="{{ restaurant.name }} image">
+                    <h5 class="card-title">{{ restaurant.name }}</h5>
                     <p class="card-text">
-                    {% if item.rating == 5 %}
+                    {% if restaurant.rating == 5 %}
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
-                    {% elif item.rating == 4 %}
+                    {% elif restaurant.rating == 4 %}
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star unchecked"></span>
-                    {% elif item.rating == 3 %}
+                    {% elif restaurant.rating == 3 %}
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star unchecked"></span>
                         <span class="fa fa-star unchecked"></span>
-                    {% elif item.rating == 2 %}
+                    {% elif restaurant.rating == 2 %}
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star unchecked"></span>
                         <span class="fa fa-star unchecked"></span>
                         <span class="fa fa-star unchecked"></span>
-                    {% elif item.rating == 1 %}
+                    {% elif restaurant.rating == 1 %}
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star unchecked"></span>
                         <span class="fa fa-star unchecked"></span>
                         <span class="fa fa-star unchecked"></span>
                         <span class="fa fa-star unchecked"></span>
-                    {% elif item.rating == 0 %}
+                    {% elif restaurant.rating == 0 %}
                         <span class="fa fa-star unchecked"></span>
                         <span class="fa fa-star unchecked"></span>
                         <span class="fa fa-star unchecked"></span>
@@ -67,7 +67,7 @@
                         <span class="fa fa-star unchecked"></span>
                     {% endif %}
                     </p>
-                    <a href="#" class="btn btn-dark">Learn More</a>
+                    <a href="/bon-appetit/restaurant/{{ restaurant.slug }}/" class="btn btn-dark">Learn More</a>
                 </div>
             </div>
         </div>
@@ -81,44 +81,44 @@
     </div>
 
     <div class="row">
-        {% for item in cheapest_list %}
+        {% for restaurant in cheapest_list %}
         <div class="col-lg-4 col-sm-6">
             <div class="card text-center">
                 <div class="card-body">
-                    <img class="card-img-top" src="{% static 'images/placeholder.jpg' %}" alt="placeholder image">
-                    <h5 class="card-title">{{ item.name }}</h5>
+                    <img class="card-img-top" src="{{ restaurant.picture.url }}" alt="{{ restaurant.name }} image">
+                    <h5 class="card-title">{{ restaurant.name }}</h5>
                     <p class="card-text">
-                        {% if item.rating == 5 %}
+                        {% if restaurant.rating == 5 %}
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
-                        {% elif item.rating == 4 %}
+                        {% elif restaurant.rating == 4 %}
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star"></span>
-                        {% elif item.rating == 3 %}
+                        {% elif restaurant.rating == 3 %}
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star"></span>
                             <span class="fa fa-star"></span>
-                        {% elif item.rating == 2 %}
+                        {% elif restaurant.rating == 2 %}
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star"></span>
                             <span class="fa fa-star"></span>
                             <span class="fa fa-star"></span>
-                        {% elif item.rating == 1 %}
+                        {% elif restaurant.rating == 1 %}
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star "></span>
                             <span class="fa fa-star "></span>
                             <span class="fa fa-star"></span>
                             <span class="fa fa-star"></span>
-                        {% elif item.rating == 0 %}
+                        {% elif restaurant.rating == 0 %}
                             <span class="fa fa-star"></span>
                             <span class="fa fa-star"></span>
                             <span class="fa fa-star"></span>
@@ -126,7 +126,7 @@
                             <span class="fa fa-star"></span>
                         {% endif %}
                         </p>
-                    <a href="#" class="btn btn-dark">Learn More</a>
+                    <a href="/bon-appetit/restaurant/{{ restaurant.slug }}/" class="btn btn-dark">Learn More</a>
                 </div>
             </div>
         </div>

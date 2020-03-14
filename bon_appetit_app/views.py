@@ -29,6 +29,17 @@ def topRestaurants(request):
     context["top_restaurants_page"] = "active"
     return render(request, 'top-restaurants.html', context=context)
 
+def viewPage(request, restaurant_name_slug):
+    context = {}
+    try:
+        restaurant = Restaurant.objects.get(slug=restaurant_name_slug)
+        context['restaurant'] = restaurant
+
+    except Restaurant.DoesNotExist:
+        context['restaurant'] = None
+
+    return render(request, 'view-page.html', context=context)
+
 def viewAccount(request):
     pass
 
