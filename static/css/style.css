@@ -69,5 +69,9 @@
 }
 
 .checked {
-    color: orange;
+    color: #ffa500;
   }
+
+.unchecked {
+    color: #343a40;
+}
