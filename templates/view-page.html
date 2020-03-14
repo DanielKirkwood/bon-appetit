@@ -73,7 +73,25 @@
                     <img src="{{ restaurant.picture.url }}" width="240">
                 </div>
                 <div class="col">
-                    2 of 3
+                    <h2>Menu:</h2>
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Item</th>
+                                <th scope="col">Price (£)</th>
+                                <th scope="col">Item Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in restaurant.menu %}
+                            <tr>
+                                <td scope="row">{{ restaurant.menu }}</td>
+                                <td>{{ restaurant.price }}</td>
+                                <td>{{ restaurant.rating }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
                 <div class="col">
                     3 of 3
