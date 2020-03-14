@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from bon_appetit_app.models import Restaurant
 
 def home(request):
     context = {}
@@ -17,11 +18,13 @@ def searchResults(request):
     pass
 
 def topRestaurants(request):
-    # the following is code segment to be implemented later
-    """ restaurant_list = Restaurant.objects.order_by('-rating')[:6]
-        context_dict["restaurants"] = restaurant_list
-    """
     context = {}
+    restaurant_rating_list = Restaurant.objects.order_by('-rating')[:6]
+    context["rating_list"] = restaurant_rating_list
+
+    restaurant_cheapest_list = Restaurant.objects.order_by('price')[:6]
+    context["cheapest_list"] = restaurant_cheapest_list
+
     # add 'active' to context dict so show current page as active
     context["top_restaurants_page"] = "active"
     return render(request, 'top-restaurants.html', context=context)

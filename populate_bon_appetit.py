@@ -1,9 +1,13 @@
+from random import randint
 import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bon_appetit_project.settings')
 
 import django
 django.setup()
 from bon_appetit_app.models import City, Restaurant
+
+def randomInt():
+    return randint(0, 5)
 
 def populate():
     Glasgow_restaurants = [{'name': 'Bread Meats Bread','address' : '79 Otago Street, G12', 'menu' : 'Burger', 'price' : 5}, 
@@ -22,16 +26,17 @@ def populate():
     for cat, cat_data in cats.items():
         c = add_cat(cat)
         for p in cat_data['restaurants']:
-            add_restaurant(c, p['name'], p['address'], p['menu'], p['price'])
+            add_restaurant(c, p['name'], p['address'], p['menu'], randomInt(), p['price'])
     
     for c in City.objects.all():
         for p in Restaurant.objects.filter(city=c):
             print(f'- {c}: {p}')
             
-def add_restaurant(cat, name, address, menu, price=0):
+def add_restaurant(cat, name, address, menu, rating, price=0,):
     p = Restaurant.objects.get_or_create(city=cat, name=name)[0]
     p.address = address
     p.menu = menu
+    p.rating = rating
     p.price = price
     p.save()
     return p

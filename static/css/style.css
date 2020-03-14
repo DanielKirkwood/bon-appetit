@@ -67,3 +67,7 @@
 .card-title {
     margin-top: 20px;
 }
+
+.checked {
+    color: orange;
+  }
