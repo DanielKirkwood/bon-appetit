@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 {% load staticfiles %}
 <html lang="en">
 <head>
@@ -24,11 +25,16 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link {{ home_page }}" href="{% url 'bon-appetit:home' %}">Home</a>
-            <a class="nav-item nav-link {{ top_restaurants_page }}" href="{% url 'bon-appetit:top-restaurants' %}">Top Restaurants</a>
-            <a class="nav-item nav-link {{ search_page }}" href="{% url 'bon-appetit:search' %}">Search</a>
-            <a class="nav-item nav-link mr-auto" href="#">Account</a>
+            <div class="navbar-nav">
+				<a class="nav-item nav-link {{ home_page }}" href="{% url 'bon-appetit:home' %}">Home</a>
+				<a class="nav-item nav-link {{ top_restaurants_page }}" href="{% url 'bon-appetit:top-restaurants' %}">Top Restaurants</a>
+				<a class="nav-item nav-link {{ search_page }}" href="{% url 'bon-appetit:search' %}">Search</a>
+			{% if user.is_authenticated %}
+				<a class="nav-item nav-link {{ logout }}" href="{% url 'bon-appetit:logout' %}">Logout</a>
+			{% else %}
+				<a class="nav-item nav-link {{ register }}" href="{% url 'bon-appetit:register' %}">Sign Up</a>
+				<a class="nav-item nav-link {{ login }}" href="{% url 'bon-appetit:login' %}">Login</a>
+			{% endif %}
           </div>
         </div>
       </nav>
@@ -36,9 +42,15 @@
     <div class="jumbotron jumbotron-fluid jumbotron-custom">
         <div class="container">
             <div id="content">
-                <h1>Bon Appétit</h1>
-                <p>Find restaurant deals fast!</p>
-                <a class="btn btn-light btn-lg" href="{% url 'bon-appetit:search' %}" role="button">Search</a>
+				{% if user.is_authenticated %}
+					<h1>Bon Appétit {{ user.username }}! </h1>
+					<p>Find restaurant deals fast!</p>
+					<a class="btn btn-light btn-lg" href="{% url 'bon-appetit:search' %}" role="button">Search</a>
+				{% else %}
+					<h1>Bon Appétit</h1>
+					<p>Find restaurant deals fast!</p>
+					<a class="btn btn-light btn-lg" href="{% url 'bon-appetit:search' %}" role="button">Search</a>
+				{% endif %}
             </div>
         </div>
     </div>
