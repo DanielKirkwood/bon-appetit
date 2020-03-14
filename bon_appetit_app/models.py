@@ -22,7 +22,7 @@ class Restaurant(models.Model):
     picture = models.ImageField(default=0)
     rating = models.IntegerField(default=0)
 
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
