@@ -5,58 +5,58 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bon_appetit_project.settings')
 
 import django
 django.setup()
-from bon_appetit_app.models import City, Restaurant, FoodItem, Menu
+from bon_appetit_app.models import City, Restaurant, FoodItem
 
 def populate():
 
     greggs_food = [
-        {'name': 'Mexican Chicken Baugette', 'price': 1.30, 'restriction': 'None'},
-        {'name': 'Ham & Cheese sandwich', 'price': 1.30, 'restriction': 'Vegetarian'},
-        {'name': 'Sausage Roll', 'price': 0.80, 'restriction': 'None'},
-        {'name': 'Yum Yum', 'price': 0.60, 'restriction': 'Vegan'},
+        {'name': 'Mexican Chicken Baugette', 'price': 1.30, 'restriction': 'None', 'rating': 3},
+        {'name': 'Ham & Cheese sandwich', 'price': 1.30, 'restriction': 'Vegetarian', 'rating': 1},
+        {'name': 'Sausage Roll', 'price': 0.80, 'restriction': 'None', 'rating': 4},
+        {'name': 'Yum Yum', 'price': 0.60, 'restriction': 'Vegan', 'rating': 5},
     ]
 
     bread_meets_bread_food = [
-        {'name': 'Black and Blue Burger', 'price': 9.50, 'restriction': 'None'},
-        {'name': 'Classic Burger', 'price': 8.00, 'restriction': 'None'},
-        {'name': 'Vegan Caribbean Burger', 'price': 9.50, 'restriction': 'None'},
-        {'name': 'Vegan Cheesebruger', 'price': 9.00, 'restriction': 'Vegan'},
+        {'name': 'Black and Blue Burger', 'price': 9.50, 'restriction': 'None', 'rating': 4},
+        {'name': 'Classic Burger', 'price': 8.00, 'restriction': 'None', 'rating': 3},
+        {'name': 'Vegan Caribbean Burger', 'price': 9.50, 'restriction': 'None', 'rating': 5},
+        {'name': 'Vegan Cheesebruger', 'price': 9.00, 'restriction': 'Vegan', 'rating': 4},
     ]
 
     oran_mor_food = [
-        {'name': '6oz Rump Steak with Rosti Potatoes', 'price': 11.50, 'restriction': 'None'},
-        {'name': 'Hake Fillet with Lemon Crushed Potatoes', 'price': 10.00, 'restriction': 'None'},
-        {'name': 'Spiced Lentil and Sweet Potato Casserole', 'price': 11.20, 'restriction': 'Vegetarian'},
+        {'name': '6oz Rump Steak with Rosti Potatoes', 'price': 11.50, 'restriction': 'None', 'rating': 5},
+        {'name': 'Hake Fillet with Lemon Crushed Potatoes', 'price': 10.00, 'restriction': 'None', 'rating': 1},
+        {'name': 'Spiced Lentil and Sweet Potato Casserole', 'price': 11.20, 'restriction': 'Vegetarian', 'rating': 3},
     ]
 
     nandos_food = [
-        {'name': 'Chicken Butterfly', 'price': 11.75, 'restriction': 'None'},
-        {'name': 'Portobello Mushroom & Halloumi Burger', 'price': 10.75, 'restriction': 'Vegetarian'},
-        {'name': 'Mozam Wrap', 'price': 10.85, 'restriction': 'None'},
+        {'name': 'Chicken Butterfly', 'price': 11.75, 'restriction': 'None', 'rating': 3},
+        {'name': 'Portobello Mushroom & Halloumi Burger', 'price': 10.75, 'restriction': 'Vegetarian', 'rating': 5},
+        {'name': 'Mozam Wrap', 'price': 10.85, 'restriction': 'None', 'rating': 5},
     ]
 
     mcdees_food = [
-        {'name': 'Big Mac', 'price': 3.19, 'restriction': 'None'},
-        {'name': 'Chicken Nuggets 6 piece', 'price': 3.19, 'restriction': 'None'},
-        {'name': 'The Spicy Veggie One', 'price': 2.99, 'restriction': 'Vegetarian'},
+        {'name': 'Big Mac', 'price': 3.19, 'restriction': 'None', 'rating': 2},
+        {'name': 'Chicken Nuggets 6 piece', 'price': 3.19, 'restriction': 'None', 'rating': 5},
+        {'name': 'The Spicy Veggie One', 'price': 2.99, 'restriction': 'Vegetarian', 'rating': 1},
     ]
 
     starbucks_food = [
-        {'name': 'Vanilla Spiced Latte (Tall)', 'price': 3.25, 'restriction': 'Vegetarian'},
-        {'name': 'Caffe Americano', 'price': 1.95, 'restriction': 'Vegetarian'},
-        {'name': 'Cheese & Marmite Sandwich', 'price': 2.85, 'restriction': 'Vegetarian'},
+        {'name': 'Vanilla Spiced Latte (Tall)', 'price': 3.25, 'restriction': 'Vegetarian', 'rating': 1},
+        {'name': 'Caffe Americano', 'price': 1.95, 'restriction': 'Vegetarian', 'rating': 2},
+        {'name': 'Cheese & Marmite Sandwich', 'price': 2.85, 'restriction': 'Vegetarian', 'rating': 3},
     ]
 
     tony_macaroni_food = [
-        {'name': 'Margherita Pizza', 'price': 5.95, 'restriction': 'Vegan'},
-        {'name': 'Diavola Pizza', 'price': 5.95, 'restriction': 'None'},
-        {'name': 'Penne Arrabbiata', 'price': 5.95, 'restriction': 'Vegetarian'},
+        {'name': 'Margherita Pizza', 'price': 5.95, 'restriction': 'Vegan', 'rating': 3},
+        {'name': 'Diavola Pizza', 'price': 5.95, 'restriction': 'None', 'rating': 4},
+        {'name': 'Penne Arrabbiata', 'price': 5.95, 'restriction': 'Vegetarian', 'rating': 5},
     ]
 
     le_petit_eloi_food = [
-        {'name': 'Le Poulet Entier', 'price': 23.00, 'restriction': 'None'},
-        {'name': 'Les Gnocchis', 'price': 14.50, 'restriction': 'Vegan'},
-        {'name': 'La Salade', 'price': 14.50, 'restriction': 'Vegetarian'},
+        {'name': 'Le Poulet Entier', 'price': 23.00, 'restriction': 'None', 'rating': 2},
+        {'name': 'Les Gnocchis', 'price': 14.50, 'restriction': 'Vegan', 'rating': 1},
+        {'name': 'La Salade', 'price': 14.50, 'restriction': 'Vegetarian', 'rating': 1},
     ]
 
 
@@ -82,30 +82,22 @@ def populate():
         city = add_city(city)
         for p in city_data['restaurants']:
             restaurant = add_restaurant(city, p['name'], p['address'], randomInt(), assignImage())
-            menu = add_menu(restaurant, restaurant.name)
+
             for f in p['menu']:
-                print(menu.restaurant_name)
-                print(f)
-                food = add_food(menu, f['name'], f['price'], f['restriction'])
+                food = add_food(restaurant, f['name'], f['price'], f['restriction'], f['rating'])
 
 
     for c in City.objects.all():
         for p in Restaurant.objects.filter(city=c):
             print(f'- {c}: {p}')
-
-
-def add_menu(restaurant, restaurant_name):
-    menu = Menu.objects.get_or_create(restaurant=restaurant)[0]
-    menu.restaurant_name = restaurant_name
-    menu.save()
-    return menu
     
-def add_food(menu, name, price, restriction):
-    f = FoodItem.objects.get_or_create(menu=menu, name=name)[0]
-    f.menu = menu
+def add_food(restaurant, name, price, restriction, rating):
+    f = FoodItem.objects.get_or_create(restaurant=restaurant, name=name)[0]
+    f.restaurant = restaurant
     f.name = name
     f.price = price
     f.restriction = restriction
+    f.rating = rating
     f.save()
     return f
             
@@ -115,7 +107,6 @@ def add_restaurant(city, name, address, rating, image):
     restaurant.rating = rating
     restaurant.picture = image
     restaurant.save()
-
     return restaurant
     
 def add_city(name):

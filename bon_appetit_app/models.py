@@ -28,23 +28,15 @@ class Restaurant(models.Model):
     def __str__(self):
         return self.name
 
-class Menu(models.Model):
-    restaurant_name = models.CharField(max_length=128)
-    restaurant = models.OneToOneField(
+class FoodItem(models.Model):
+    restaurant = models.ForeignKey(
         Restaurant,
         on_delete = models.CASCADE,
-        primary_key=True,
-    )
-
-class FoodItem(models.Model):
-    menu = models.ForeignKey(
-        Menu,
-        on_delete = models.CASCADE,
-        related_name='food',
     )
     name = models.CharField(max_length=255)
     price = models.FloatField(default=0)
     restriction = models.CharField(max_length=255, default='None')
+    rating = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name

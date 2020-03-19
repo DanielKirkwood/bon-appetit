@@ -19,11 +19,6 @@ def searchResults(request):
 
 def topRestaurants(request):
     context = {}
-    restaurant_rating_list = Restaurant.objects.order_by('-rating')[:6]
-    context["rating_list"] = restaurant_rating_list
-
-    restaurant_cheapest_list = Restaurant.objects.order_by('price')[:6]
-    context["cheapest_list"] = restaurant_cheapest_list
 
     # add 'active' to context dict so show current page as active
     context["top_restaurants_page"] = "active"
