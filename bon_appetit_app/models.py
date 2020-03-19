@@ -18,7 +18,6 @@ class Restaurant(models.Model):
     address = models.CharField(max_length=128, unique=True)
     picture = models.ImageField(blank=True)
     rating = models.IntegerField(default=0)
-
     slug = models.SlugField(unique=True)
 
     def save(self, *args, **kwargs):
@@ -34,7 +33,7 @@ class FoodItem(models.Model):
         on_delete = models.CASCADE,
     )
     name = models.CharField(max_length=255)
-    price = models.FloatField(default=0)
+    price = models.DecimalField(max_digits=5, decimal_places=2)
     restriction = models.CharField(max_length=255, default='None')
     rating = models.IntegerField(default=0)
 

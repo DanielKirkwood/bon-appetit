@@ -69,32 +69,33 @@
             </div>
 
             <div class="row">
-                <div class="col">
+                <div class="col-lg-3 col-md-4 col-sm-4">
                     <img src="{{ restaurant.picture.url }}" width="240">
                 </div>
-                <div class="col">
-                    <h2>Menu:</h2>
+
+                <div class="col-lg-6 col-md-4 col-sm-4">
                     <table class="table">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">Item</th>
+                                <th scope="col">Name</th>
                                 <th scope="col">Price (£)</th>
                                 <th scope="col">Item Rating</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for item in restaurant.menu %}
-                            <tr>
-                                <td scope="row">{{ restaurant.menu }}</td>
-                                <td>{{ restaurant.price }}</td>
-                                <td>{{ restaurant.rating }}</td>
+                            {% for item in menu %}
+                            <tr class='test'>
+                                <td scope="row">{{ item.name }}</td>
+                                <td>{{ item.price }}</td>
+                                <td>{{ item.rating }}</td>
                             </tr>
                             {% endfor %}
                         </tbody>
                     </table>
                 </div>
-                <div class="col">
-                    3 of 3
+
+                <div class="col-lg-3 col-md-4 col-sm-4">
+                    <!-- google maps integration goes here -->
                 </div>
             </div>
         </div>

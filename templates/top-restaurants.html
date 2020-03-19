@@ -29,37 +29,37 @@
                     <img class="card-img-top" src="{{ restaurant.picture.url }}" alt="{{ restaurant.name }} image">
                     <h5 class="card-title">{{ restaurant.name }}</h5>
                     <p class="card-text">
-                    {% if restaurant.avg_rating == 5 %}
+                    {% if restaurant.rating == 5 %}
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
-                    {% elif restaurant.avg_rating == 4 %}
+                    {% elif restaurant.rating == 4 %}
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star unchecked"></span>
-                    {% elif restaurant.avg_rating == 3 %}
+                    {% elif restaurant.rating == 3 %}
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star unchecked"></span>
                         <span class="fa fa-star unchecked"></span>
-                    {% elif restaurant.avg_rating == 2 %}
+                    {% elif restaurant.rating == 2 %}
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star unchecked"></span>
                         <span class="fa fa-star unchecked"></span>
                         <span class="fa fa-star unchecked"></span>
-                    {% elif restaurant.avg_rating == 1 %}
+                    {% elif restaurant.rating == 1 %}
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star unchecked"></span>
                         <span class="fa fa-star unchecked"></span>
                         <span class="fa fa-star unchecked"></span>
                         <span class="fa fa-star unchecked"></span>
-                    {% elif restaurant.avg_rating == 0 %}
+                    {% elif restaurant.rating == 0 %}
                         <span class="fa fa-star unchecked"></span>
                         <span class="fa fa-star unchecked"></span>
                         <span class="fa fa-star unchecked"></span>
@@ -88,37 +88,37 @@
                     <img class="card-img-top" src="{{ restaurant.picture.url }}" alt="{{ restaurant.name }} image">
                     <h5 class="card-title">{{ restaurant.name }}</h5>
                     <p class="card-text">
-                        {% if restaurant.avg_rating == 5 %}
+                        {% if restaurant.rating == 5 %}
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
-                        {% elif restaurant.avg_rating == 4 %}
+                        {% elif restaurant.rating == 4 %}
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star"></span>
-                        {% elif restaurant.avg_rating == 3 %}
+                        {% elif restaurant.rating == 3 %}
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star"></span>
                             <span class="fa fa-star"></span>
-                        {% elif restaurant.avg_rating == 2 %}
+                        {% elif restaurant.rating == 2 %}
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star"></span>
                             <span class="fa fa-star"></span>
                             <span class="fa fa-star"></span>
-                        {% elif restaurant.avg_rating == 1 %}
+                        {% elif restaurant.rating == 1 %}
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star "></span>
                             <span class="fa fa-star "></span>
                             <span class="fa fa-star"></span>
                             <span class="fa fa-star"></span>
-                        {% elif restaurant.avg_rating == 0 %}
+                        {% elif restaurant.rating == 0 %}
                             <span class="fa fa-star"></span>
                             <span class="fa fa-star"></span>
                             <span class="fa fa-star"></span>

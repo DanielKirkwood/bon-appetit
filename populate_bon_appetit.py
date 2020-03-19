@@ -1,6 +1,8 @@
 from random import randint
 from bon_appetit_project import settings
 import os
+from django.db.models import Avg
+from django.db.models import Func
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bon_appetit_project.settings')
 
 import django
@@ -81,11 +83,21 @@ def populate():
     for city, city_data in cities.items():
         city = add_city(city)
         for p in city_data['restaurants']:
-            restaurant = add_restaurant(city, p['name'], p['address'], randomInt(), assignImage())
+            restaurant = add_restaurant(city, p['name'], p['address'], assignImage())
 
             for f in p['menu']:
                 food = add_food(restaurant, f['name'], f['price'], f['restriction'], f['rating'])
 
+        # update the restaurants average rating based off menu items ratings
+        for r in Restaurant.objects.all():
+            total = 0
+            count = 0
+            for f in FoodItem.objects.filter(restaurant=r):
+                total += f.rating
+                count += 1
+            average = total/count
+            r.rating = average
+            r.save()
 
     for c in City.objects.all():
         for p in Restaurant.objects.filter(city=c):
@@ -101,10 +113,9 @@ def add_food(restaurant, name, price, restriction, rating):
     f.save()
     return f
             
-def add_restaurant(city, name, address, rating, image):
+def add_restaurant(city, name, address, image):
     restaurant = Restaurant.objects.get_or_create(city=city, name=name)[0]
     restaurant.address = address
-    restaurant.rating = rating
     restaurant.picture = image
     restaurant.save()
     return restaurant
@@ -124,6 +135,11 @@ def assignImage():
     size = len(entries)
     select = randint(0, size-1)
     return entries[select]
+
+class Round(Func):
+    function = 'ROUND'
+    template='%(function)s(%(expressions)s, 0)'
+
 
 if __name__ == '__main__':
     print('Starting bon_appetit population script..')
