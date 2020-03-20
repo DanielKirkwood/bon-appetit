@@ -30,12 +30,16 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link {{ home_page }}" href="{% url 'bon-appetit:home' %}">Home</a>
-            <a class="nav-item nav-link {{ top_restaurants_page }}" href="{% url 'bon-appetit:top-restaurants' %}">Top Restaurants</a>
-            <a class="nav-item nav-link {{ search_page }}" href="{% url 'bon-appetit:search' %}">Search</a>
-            <div class="some-ting"></div>
-            <a class="nav-item nav-link" href="#">Account</a>
+            <div class="navbar-nav">
+                <a class="nav-item nav-link {{ home_page }}" href="{% url 'bon-appetit:home' %}">Home</a>
+				<a class="nav-item nav-link {{ top_restaurants_page }}" href="{% url 'bon-appetit:top-restaurants' %}">Top Restaurants</a>
+				<a class="nav-item nav-link {{ search_page }}" href="{% url 'bon-appetit:search' %}">Search</a>
+			{% if user.is_authenticated %}
+				<a class="nav-item nav-link {{ logout }}" href="{% url 'bon-appetit:logout' %}">Logout</a>
+			{% else %}
+				<a class="nav-item nav-link {{ register }}" href="{% url 'bon-appetit:register' %}">Sign Up</a>
+				<a class="nav-item nav-link {{ login }}" href="{% url 'bon-appetit:login' %}">Login</a>
+			{% endif %}
           </div>
         </div>
       </nav>

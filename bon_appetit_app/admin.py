@@ -1,5 +1,5 @@
 from django.contrib import admin
-from bon_appetit_app.models import Restaurant, City, FoodItem
+from bon_appetit_app.models import Restaurant, City, FoodItem, UserProfile
 
 class RestaurantAdmin(admin.ModelAdmin):
     list_display = ('name', 'city', 'address')
@@ -11,4 +11,4 @@ class FoodItemAdmin(admin.ModelAdmin):
 admin.site.register(Restaurant, RestaurantAdmin)
 admin.site.register(City)
 admin.site.register(FoodItem, FoodItemAdmin)
-# Register your models here.
+admin.site.register(UserProfile)
