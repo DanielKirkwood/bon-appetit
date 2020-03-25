@@ -2,14 +2,16 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 
+
 class City(models.Model):
     name = models.CharField(max_length=128, unique=True)
-
-    class meta:
+    
+    class Meta:
         verbose_name_plural = 'Cities'
-
+    
     def __str__(self):
         return self.name
+
 
 class Restaurant(models.Model):
     city = models.ForeignKey(City, on_delete=models.CASCADE)
@@ -22,7 +24,7 @@ class Restaurant(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Restaurant, self).save(*args, **kwargs)
-
+    
     def __str__(self):
         return self.name
 
@@ -32,7 +34,7 @@ class FoodItem(models.Model):
         on_delete = models.CASCADE,
     )
     name = models.CharField(max_length=255)
-    price = models.DecimalField(defualt=0.00, max_digits=5, decimal_places=2)
+    price = models.DecimalField(default=0.00, max_digits=5, decimal_places=2)
     restriction = models.CharField(max_length=255, default='None')
     rating = models.IntegerField(default=0)
 
