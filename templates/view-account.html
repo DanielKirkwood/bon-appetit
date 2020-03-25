@@ -6,8 +6,18 @@
 
 {% block hero_content_block %}
     <h1>View Account</h1>
-    <p>view your account details</p>
+    <p>view your account details and favourite restaurants</p>
 {% endblock %}
 
 {% block body_block %}
+    <div class="content-section">
+        <div class="media">
+            <img class="rounded-circle account-img" src="{{ user.picture.url }}" alt="profile picture">
+            <div class="media-body">
+                <h2 class="account-heading">{{ user.username }}</h2>
+                <p class="text-secondary">{{ user.email }}</p>
+            </div>
+        </div>
+        <!-- form here -->
+    </div>
 {% endblock %}

@@ -51,6 +51,39 @@ def viewPage(request, restaurant_name_slug):
 
     return render(request, 'view-page.html', context=context)
 
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        user = authenticate(username=username, password=password)
+        
+        if user:
+            if user.is_active:
+                login(request, user)
+                return redirect(reverse('bon-appetit:home'))
+            else:
+                return HttpResponse("Your Bon Appetit account is disabled.")
+        else:
+            print(f"Invalid login details: {username}, {password}")
+            return HttpResponse("Invalid login details supplied.")
+    else:
+        return render(request, 'login.html')
+        
+@login_required
+def user_logout(request):
+    logout(request)
+    return redirect(reverse('bon-appetit:home'))
+
+@login_required
+def viewAccount(request):
+    context = {}
+
+    return render(request, 'view-account.html', context=context)
+
+def editAccount(request):
+    pass
+
 def getregistered(request):
 
     context = {}
@@ -88,37 +121,3 @@ def getregistered(request):
     context['registered'] = registered
 
     return context
-
-
-def user_login(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        
-        user = authenticate(username=username, password=password)
-        
-        if user:
-            if user.is_active:
-                login(request, user)
-                return redirect(reverse('bon-appetit:home'))
-            else:
-                return HttpResponse("Your Bon Appetit account is disabled.")
-        else:
-            print(f"Invalid login details: {username}, {password}")
-            return HttpResponse("Invalid login details supplied.")
-    else:
-        return render(request, 'login.html')
-        
-@login_required
-def user_logout(request):
-    logout(request)
-    return redirect(reverse('bon-appetit:home'))
-
-
-def viewAccount(request):
-    context = getregistered(request)
-
-    return render(request, 'view-account.html', context=context)
-
-def editAccount(request):
-    pass
