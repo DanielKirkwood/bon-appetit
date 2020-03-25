@@ -116,7 +116,9 @@ def user_logout(request):
 
 
 def viewAccount(request):
-    return HttpResponse("logged in")
+    context = getregistered(request)
+
+    return render(request, 'view-account.html', context=context)
 
 def editAccount(request):
     pass
