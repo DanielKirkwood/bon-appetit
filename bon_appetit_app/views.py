@@ -66,7 +66,11 @@ def user_login(request):
                 return HttpResponse("Your Bon Appetit account is disabled.")
         else:
             print(f"Invalid login details: {username}, {password}")
-            return HttpResponse("Invalid login details supplied.")
+            context = getregistered(request)
+            context['invalid'] =  True
+            context["home_page"] = "active"
+            return render(request, 'home.html', context)
+
     else:
         return render(request, 'login.html')
         
