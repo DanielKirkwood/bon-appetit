@@ -48,12 +48,22 @@ class UserProfile(models.Model):
     DIETARY_REQUIRMENTS_CHOICES = [
         (NONE, 'None'),
         (VEGAN, 'Vegan'),
-        (VEGATARIAN, 'Vegatarian')
+        (VEGATARIAN, 'Vegatarian'),
+    ]
+
+    GLASGOW = 'GLA'
+    EDINBURGH = 'EDI'
+    MANCHESTER = 'MAN'
+    CITY_CHOICES = [
+        (GLASGOW, 'Glasgow'),
+        (EDINBURGH, 'Edinburgh'),
+        (MANCHESTER, 'Manchester'),
     ]
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     firstname = models.CharField(max_length=128, default='')
     surname = models.CharField(max_length=128, default='')
+    city = models.CharField(max_length=3, choices=CITY_CHOICES, default=None)
     dietary_requirments = models.CharField(max_length=2, choices=DIETARY_REQUIRMENTS_CHOICES, default=NONE)
     website = models.URLField(blank=True)
     picture = models.ImageField(upload_to='profile_image', default='profile_image/defaultProfilePicture.jpg')
