@@ -130,7 +130,7 @@ def randomInt():
     return randint(0, 5)
 
 def assignImage():
-    root = settings.MEDIA_ROOT
+    root = settings.MEDIA_ROOT + '/restaurant_placeholder_images'
     entries = os.listdir(root)
     size = len(entries)
     select = randint(0, size-1)

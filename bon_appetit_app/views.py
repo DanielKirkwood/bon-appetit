@@ -78,7 +78,7 @@ def user_logout(request):
 @login_required
 def viewAccount(request):
     context = {}
-
+  
     return render(request, 'view-account.html', context=context)
 
 def editAccount(request):
