@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from bon_appetit_app.models import Restaurant, FoodItem
+from bon_appetit_app.models import Restaurant, FoodItem, UserProfile
 from bon_appetit_app.forms import UserForm, UserProfileForm
 
 def home(request):
@@ -78,7 +78,9 @@ def user_logout(request):
 @login_required
 def viewAccount(request):
     context = {}
-  
+    profile = UserProfile.objects.get(user=request.user)
+    context['profile'] = profile
+    print(profile.picture.url)
     return render(request, 'view-account.html', context=context)
 
 def editAccount(request):
