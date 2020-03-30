@@ -8,8 +8,15 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bon_appetit_project.settings')
 import django
 django.setup()
 from bon_appetit_app.models import City, Restaurant, FoodItem
+from django.db import IntegrityError
+from django.contrib.auth.models import User
 
 def populate():
+
+    admin_username = 'admin'
+    admin_email = 'admin@bon-appetit.com'
+    admin_password = 'admin1234'
+
 
     greggs_food = [
         {'name': 'Mexican Chicken Baugette', 'price': 1.30, 'restriction': 'None', 'rating': 3},
@@ -102,6 +109,10 @@ def populate():
     for c in City.objects.all():
         for p in Restaurant.objects.filter(city=c):
             print(f'- {c}: {p}')
+
+    create_super_user(admin_username, admin_email, admin_password)
+    print('\nSuperUser:', User.objects.get(is_superuser=True).username)
+
     
 def add_food(restaurant, name, price, restriction, rating):
     f = FoodItem.objects.get_or_create(restaurant=restaurant, name=name)[0]
@@ -125,6 +136,12 @@ def add_city(name):
     city.save()
     return city
 
+def create_super_user(username, email, password):
+    try:
+        user = User.objects.create_superuser(username, email, password)
+        return user
+    except IntegrityError:
+        pass
 
 def randomInt():
     return randint(0, 5)
