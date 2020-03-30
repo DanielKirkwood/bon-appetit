@@ -10,14 +10,37 @@
 {% endblock %}
 
 {% block body_block %}
-    <div class="content-section">
-        <div class="media">
-            <img class="rounded-circle account-img" src="{{ profile.picture.url }}" alt="profile picture" width=250>
-            <div class="media-body">
-                <h2 class="account-heading">{{ user.username }}</h2>
-                <p class="text-secondary">{{ user.email }}</p>
+    <img class="rounded-circle account-img" src="{{ profile.picture.url }}" alt="profile picture" width=250>
+    <span>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>{{ user.email }}</h1>
+                </div>
             </div>
-        </div>
-        <!-- form here -->
-    </div>
+        
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1>firstname</h1>
+                </div>
+                <div class="col-lg-6">
+                    <h1>surname</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1>city</h1>
+                </div>
+                <div class="col-lg-6">
+                    <h1>dietary requirments</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>favourites</h1>
+                </div>
+            </div>
+    </span>
 {% endblock %}
