@@ -42,30 +42,24 @@ class FoodItem(models.Model):
         return self.name
 
 class UserProfile(models.Model):
-    NONE = 'NA'
-    VEGAN = 'VA'
-    VEGATARIAN = 'VG'
     DIETARY_REQUIRMENTS_CHOICES = [
-        (NONE, 'None'),
-        (VEGAN, 'Vegan'),
-        (VEGATARIAN, 'Vegatarian'),
+        ('NA', 'None'),
+        ('VA', 'Vegan'),
+        ('VG', 'Vegatarian'),
     ]
 
-    GLASGOW = 'GLA'
-    EDINBURGH = 'EDI'
-    MANCHESTER = 'MAN'
     CITY_CHOICES = [
-        (GLASGOW, 'Glasgow'),
-        (EDINBURGH, 'Edinburgh'),
-        (MANCHESTER, 'Manchester'),
+        ('NON', 'None'),
+        ('GLA', 'Glasgow'),
+        ('EDI', 'Edinburgh'),
+        ('MAN', 'Manchester'),
     ]
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     firstname = models.CharField(max_length=128, default='')
     surname = models.CharField(max_length=128, default='')
-    city = models.CharField(max_length=3, choices=CITY_CHOICES, default=None)
-    dietary_requirments = models.CharField(max_length=2, choices=DIETARY_REQUIRMENTS_CHOICES, default=NONE)
-    website = models.URLField(blank=True)
+    city = models.CharField(max_length=3, choices=CITY_CHOICES, default='NON')
+    dietary_requirments = models.CharField(max_length=2, choices=DIETARY_REQUIRMENTS_CHOICES, default='NA')
     picture = models.ImageField(upload_to='profile_image', default='profile_image/defaultProfilePicture.jpg')
 
     def __str__(self):
