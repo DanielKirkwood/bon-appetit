@@ -42,7 +42,19 @@ class FoodItem(models.Model):
         return self.name
 
 class UserProfile(models.Model):
+    NONE = 'NA'
+    VEGAN = 'VA'
+    VEGATARIAN = 'VG'
+    DIETARY_REQUIRMENTS_CHOICES = [
+        (NONE, 'None'),
+        (VEGAN, 'Vegan'),
+        (VEGATARIAN, 'Vegatarian')
+    ]
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    firstname = models.CharField(max_length=128, default='')
+    surname = models.CharField(max_length=128, default='')
+    dietary_requirments = models.CharField(max_length=2, choices=DIETARY_REQUIRMENTS_CHOICES, default=NONE)
     website = models.URLField(blank=True)
     picture = models.ImageField(upload_to='profile_image', default='profile_image/defaultProfilePicture.jpg')
 
