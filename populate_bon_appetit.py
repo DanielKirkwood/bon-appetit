@@ -111,7 +111,7 @@ def populate():
             print(f'- {c}: {p}')
 
     create_super_user(admin_username, admin_email, admin_password)
-    print('\nSuperUser:', User.objects.get(is_superuser=True).username)
+    print('\n-SuperUser:', User.objects.get(is_superuser=True).username)
 
     
 def add_food(restaurant, name, price, restriction, rating):
@@ -151,7 +151,7 @@ def assignImage():
     entries = os.listdir(root)
     size = len(entries)
     select = randint(0, size-1)
-    return entries[select]
+    return '/restaurant_placeholder_images/' + entries[select]
 
 class Round(Func):
     function = 'ROUND'

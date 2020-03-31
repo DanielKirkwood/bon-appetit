@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from bon_appetit_app.models import Restaurant, FoodItem, UserProfile
 from bon_appetit_app.forms import UserForm, UserProfileForm
 
+
 def home(request):
     context = getregistered(request)
     # add 'active' to context dict so show current page as active
@@ -18,6 +19,38 @@ def search(request):
     context = getregistered(request)
     # add 'active' to context dict so show current page as active
     context["search_page"] = "active"
+
+    if request.method == 'GET':
+
+        querySet = Restaurant.objects.all()
+        foodSet = FoodItem.objects.all()
+
+        inputNameQuery = request.GET.get('inputName')
+        inputCityQuery = request.GET.get('inputCity')
+        inputRestrictionsQuery = request.GET.get('inputRestrictions')
+        inputRatingQuery = request.GET.get('inputRating')
+
+        if inputNameQuery != '' and inputNameQuery is not None:
+            querySet = querySet.filter(name__icontains=inputNameQuery)
+        
+        if inputCityQuery != '' and inputCityQuery is not None:
+            if inputCityQuery != 'Any':
+                querySet = querySet.filter(city__name=inputCityQuery)
+
+        if inputRestrictionsQuery != '' and inputRestrictionsQuery is not None:
+            if inputRestrictionsQuery != 'None':
+                foodSet = foodSet.filter(restriction=inputRestrictionsQuery)
+                names = []
+                for item in foodSet:
+                    names.append(item.restaurant.name)
+                querySet = querySet.filter(name__in=names)
+        
+        if inputRatingQuery != '' and inputRatingQuery is not None:
+            if inputRatingQuery != 'None':
+                querySet = querySet.filter(rating=int(inputRatingQuery))
+
+        context['querySet'] = querySet
+
     return render(request, 'search.html', context=context)
 
 def searchResults(request):

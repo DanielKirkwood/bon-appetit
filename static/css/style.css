@@ -79,3 +79,7 @@
 .name-rating {
     text-align: center;
 }
+
+.search-list {
+    list-style-type: none;
+}
