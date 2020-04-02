@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block hero_content_block %}
-    <h1>View Account</h1>
-    <p>view your account details and favourite restaurants</p>
+    <h1>Edit your Account</h1>
+    <p>Change your personal details</p>
 {% endblock %}
 
 {% block body_block %}
@@ -15,7 +15,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    <h3>{{ user.email }}</h3><a class="nav-item nav-link {{ view_account_page }}" href="{% url 'bon-appetit:edit-account' %}">Edit Account</a>
+                    <h3>{{ user.email }}</h3>
                 </div>
             </div>
         <br>

@@ -119,9 +119,14 @@ def viewAccount(request):
     context['profile'] = profile
     print(profile.picture.url)
     return render(request, 'view-account.html', context=context)
-
+    
+@login_required
 def editAccount(request):
-    pass
+    context = {}
+    profile = UserProfile.objects.get(user=request.user)
+    context['profile'] = profile
+    print(profile.picture.url)
+    return render(request, 'edit-account.html', context=context)
 
 def getregistered(request):
 
