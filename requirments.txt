@@ -1,0 +1,7 @@
+Django==2.1.5
+django-braces==1.14.0
+django-model-utils==4.0.0
+Pillow==7.0.0
+pytz==2019.3
+six==1.14.0
+swapper==1.1.2.post1
