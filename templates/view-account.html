@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title_block %}
+    View Account
+{% endblock %}
+
+{% block hero_content_block %}
+    <h1>View Account</h1>
+    <p>view your account details and favourite restaurants</p>
+{% endblock %}
+
+{% block body_block %}
+    <img class="rounded-circle account-img" src="{{ profile.picture.url }}" alt="profile picture" width=250>
+    <span>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h3>{{ user.email }}</h3><a class="nav-item nav-link {{ view_account_page }}" href="{% url 'bon-appetit:edit-account' %}">Edit Account</a>
+                </div>
+            </div>
+        <br>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3 style= "float: left;">First Name: </h3><h3 style= "float: right;">{{ profile.firstname }}</h3>
+                </div>
+                <div class="col-lg-6">
+                    <h3 style= "float: left;">Surname: <h3><h3 style= "float: right;">{{ profile.surname }}</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3 style= "float: left;"> Home city: </h3><h3 style= "float: right;">{{ profile.get_city_display }}</h3>
+                </div>
+                <div class="col-lg-6">
+                    <h3 style= "float: left;">Dietary requirements?</h3><h3 style= "float: right;">{{ profile.get_dietary_requirments_display }}</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>Favourite Restaurants:</h3> {{ profile.get_favourite_restaurants }}
+                </div>
+            </div>
+    </span>
+{% endblock %}

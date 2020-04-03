@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title_block %}
+    Search
+{% endblock %}
+
+{% block hero_content_block %}
+    <h1>Search</h1>
+    <p>Search for restaurants to suit your needs</p>
+{% endblock %}
+
+{% block body_block %}
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6">
+
+            <form class="form-search" action="." method="get">
+                {% csrf_token %}
+                <!-- Input fields -->
+                <div class="form-group">
+                    <label for="inputName">Name:</label>
+                    <input type="text" class="form-control inputname" id="inputname" placeholder="Restaurant name goes here..." name="inputName">
+                </div>
+
+                <div class="form-group">
+                    <label for="inputCity">City:</label>
+                    <select class="form-control" name="inputCity" id="inputCity">
+                        <option>Any</option>
+                        <option>Glasgow</option>
+                        <option>Edinburgh</option>
+                        <option>Manchester</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputRestrictions">Dietary Restrictions:</label>
+                    <select class="form-control" name="inputRestrictions" id="inputRestrictions">
+                        <option>None</option>
+                        <option>Vegetarian</option>
+                        <option>Vegan</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputRating">Rating:</label>
+                    <select class="form-control" name="inputRating" id="inputRating">
+                        <option value='None'>Any</option>
+                        <option value='5' >5 Star</option>
+                        <option value='4' >4 Star</option>
+                        <option value='3' >3 Star</option>
+                        <option value='2' >2 Star</option>
+                        <option value='1' >1 Star</option>
+                        <option value='0' >0 Star</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-customized">Search</button>
+            </form>
+            <!-- Form end -->
+
+            <hr>
+
+            <div class="row">
+                <ul class="search-list">
+                    {% for restaurant in querySet %}
+                        <li>
+                            <strong>Name: </strong>{{ restaurant.name }}
+                            <span><strong>Rating: </strong>{{ restaurant.rating }}</span>
+                            <span><strong>Address: </strong>{{ restaurant.address }}</span>
+                            <span><a href="/bon-appetit/restaurant/{{ restaurant.slug }}/">Learn More</a></span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
